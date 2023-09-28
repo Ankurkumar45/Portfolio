@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursor Completing Word with Cursor Effect</title>
+    <style>
+        #word-container {
+            font-family: Arial, sans-serif;
+            font-size: 24px;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 2px solid #000;
+            animation: cursor 1s infinite;
+        }
+
+        @keyframes cursor {
+            0% {
+                border-right: 2px solid #000;
+            }
+            50% {
+                border-right: 2px solid transparent;
+            }
+            100% {
+                border-right: 2px solid #000;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="word-container"></div>
+
+    <script>
+        const words = ["web developer", "software developer"];
+        let wordIndex = 0;
+        let charIndex = 0;
+        const wordContainer = document.getElementById("word-container");
+
+        function typeWord() {
+            if (charIndex < words[wordIndex].length) {
+                wordContainer.textContent += words[wordIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(typeWord, 100); // Adjust typing speed here
+            } else {
+                setTimeout(eraseWord, 1500); // Wait before erasing the word
+            }
+        }
+
+        function eraseWord() {
+            if (charIndex > 0) {
+                wordContainer.textContent = words[wordIndex].substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(eraseWord, 50); // Adjust erasing speed here
+            } else {
+                wordIndex = (wordIndex + 1) % words.length;
+                setTimeout(typeWord, 1000); // Wait before typing the next word
+            }
+        }
+
+        // Start the animation
+        typeWord();
+    </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <input type="checkbox" id="check">
+    <label for="check" class="icons">
+        <i class="fa-sharp fa-solid fa-bars" id="manu-icon"></i>
+        <i class="fa-solid fa-x" id="close-icon"></i>
+    </label>
+    <nav class="navbar">
+        <div class="container-1">
+            <a href="index.html" class="navbar-anc">
+                <span>Ankur</span>
+            </a>
+            <div class="list-button">
+                <ul>
+                    <li><a href="#home" id="home-tag" style="--i:0;">Home</a></li>
+                    <li><a href="#about" style="--i:1;">About</a></li>
+                    <!-- <li><a href="#">Blogs</a></li> -->
+                    <li><a href="#" style="--i:2;">Projects</a></li>
+                    <li><a href="#" style="--i:3;">Skills</a></li>
+                    <li><a href="#" style="--i:4;">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="home" id="home">
+        <div class="main-home-div">
+            <div class="home-section">
+                <span>Hello! I'm</span>
+                <div class="my-name">
+                    Ankur Kr. Dwivedi
+                </div>
+                <p>
+                    A passionate and creative full-stack web developer. I have a deep love for all things web-related,
+                    and I'm constantly seeking new ways to enhance the digital world through my skills and expertise.
+                </p>
+                <button class="resume-btn">
+                    <a href="resume.pdf" target="_blank" id="resume">RESUME</a>
+                </button>
+                <div class="social-media">
+                    <button class="social"><a href="https://www.facebook.com/profile.php?id=100013053016778"
+                            target="_blank"><img src="facebook.png" alt="facebook"></a></button>
+                    <button class="social"><a href="https://github.com/" target="_blank"><img src="GitHub.png" alt="GitHub"></a></button>
+                    <button class="social"><a href="https://www.linkedin.com/in/ankur-dwivedi-264209231/"
+                            target="_blank"><img src="linkedin.png" alt="linkedin"></a></button>
+                    <button class="social"><a href="https://twitter.com/The_Rohitian" target="_blank"><img src="twitter.png" alt="twitter"></a></button>
+                    <button class="social"><a href="https://www.instagram.com/ur_ankur/" target="_blank"><img src="instagram.png" alt="instagram"></a></button>
+                </div>
+            </div>
+            <div class="image-div">
+                <img src="my-image.png" alt="my-image" width="300px" height="500px">
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-div">
+            <div>About me</div>
+            <hr><br>
+            <p>I'm Ankur Kr. Dwivedi. Currently I'm a B.Tech student (Computer Science and Engineering) at Motihari College of Engingeeing, Motihari.</p>
+            <p><b>Session: 2021-25</b></p>
+        </div>
+    </section>
+
+</body>
+
+</html>
