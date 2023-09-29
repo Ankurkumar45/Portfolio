@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="script.js"></script>
 </head>
 
 <body>
@@ -53,28 +54,38 @@
                 <div class="social-media">
                     <button class="social"><a href="https://www.facebook.com/profile.php?id=100013053016778"
                             target="_blank"><img src="facebook.png" alt="facebook"></a></button>
-                    <button class="social"><a href="https://github.com/" target="_blank"><img src="GitHub.png" alt="GitHub"></a></button>
+                    <button class="social"><a href="https://github.com/" target="_blank"><img src="GitHub.png"
+                                alt="GitHub"></a></button>
                     <button class="social"><a href="https://www.linkedin.com/in/ankur-dwivedi-264209231/"
                             target="_blank"><img src="linkedin.png" alt="linkedin"></a></button>
-                    <button class="social"><a href="https://twitter.com/The_Rohitian" target="_blank"><img src="twitter.png" alt="twitter"></a></button>
-                    <button class="social"><a href="https://www.instagram.com/ur_ankur/" target="_blank"><img src="instagram.png" alt="instagram"></a></button>
+                    <button class="social"><a href="https://twitter.com/The_Rohitian" target="_blank"><img
+                                src="twitter.png" alt="twitter"></a></button>
+                    <button class="social"><a href="https://www.instagram.com/ur_ankur/" target="_blank"><img
+                                src="instagram.png" alt="instagram"></a></button>
                 </div>
             </div>
-            <div class="image-div">
+            <!-- <div class="image-div">
                 <img src="my-image.png" alt="my-image" width="300px" height="500px">
-            </div>
+            </div> -->
         </div>
     </section>
 
     <section class="about" id="about">
         <div class="about-div">
-            <div>About me</div>
+            <div>𝑨𝒃𝒐𝒖𝒕 𝒎𝒆</div>
             <hr><br>
-            <p>I'm Ankur Kr. Dwivedi. Currently I'm a B.Tech student (Computer Science and Engineering) at Motihari College of Engingeeing, Motihari.</p>
+            <img src="my-image-2.jpg" alt="my-image"><br><br>
+            <p>I'm Ankur Kr. Dwivedi. Currently I'm a B.Tech student (Computer Science and Engineering) at Motihari
+                College of Engingeeing, Motihari.</p>
             <p><b>Session: 2021-25</b></p>
         </div>
     </section>
-
+    <script>
+        window.addEventListener("scroll",function(){
+            var header=document.querySelector("nav");
+            header.classList.toggle("sticky", window.scrollY>0)
+        })
+    </script>
 </body>
 
 </html>
