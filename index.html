@@ -39,6 +39,9 @@
 
     <section class="home" id="home">
         <div class="main-home-div">
+            <div class="main-div">
+                <img src="image.png" alt="My-Image" id="image">
+            </div>
             <div class="home-section">
                 <span>Hello! I'm</span>
                 <div class="my-name">
@@ -81,9 +84,9 @@
         </div>
     </section>
     <script>
-        window.addEventListener("scroll",function(){
-            var header=document.querySelector("nav");
-            header.classList.toggle("sticky", window.scrollY>0)
+        window.addEventListener("scroll", function () {
+            var header = document.querySelector("nav");
+            header.classList.toggle("sticky", window.scrollY > 0)
         })
     </script>
 </body>
