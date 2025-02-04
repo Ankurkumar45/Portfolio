@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const Scroll = () => {
+const Scroll = ({ lightMode, setLightMode }) => {
     const [isVisible, setIsVisible] = useState(false);
     const [scrollProgress, setScrollProgress] = useState(0);
 
@@ -30,7 +30,6 @@ const Scroll = () => {
             {isVisible && (
                 <div className="fixed bottom-8 right-8 z-50">
                     <div className="relative">
-                        {/* Circular Progress */}
                         <svg
                             className="w-12 h-12 transform -rotate-90"
                             viewBox="0 0 100 100"
@@ -45,7 +44,7 @@ const Scroll = () => {
                                 cy="50"
                             />
                             <circle
-                                className="text-indigo-500 transition-all duration-300"
+                                className={`${lightMode ? 'text-gray-500' : 'text-indigo-500'} transition-all duration-300`}
                                 strokeWidth="8"
                                 strokeDasharray={264}
                                 strokeDashoffset={264 - (scrollProgress * 264) / 100}
@@ -57,14 +56,9 @@ const Scroll = () => {
                                 cy="50"
                             />
                         </svg>
-
-                        {/* Button */}
                         <button
                             onClick={scrollToTop}
-                            className="cursor-pointer absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
-                                p-2 bg-indigo-500 text-white rounded-full 
-                                hover:bg-indigo-600 transition-all duration-300
-                                hover:scale-110 focus:outline-none"
+                            className={`cursor-pointer absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-2 ${lightMode ? 'bg-gray-500' : 'bg-indigo-500'} text-white rounded-full hover:bg-${lightMode ? 'gray-800' : 'indigo-600'} transition-all duration-300 hover:scale-110 focus:outline-none`}
                             aria-label="Scroll to top"
                         >
                             <svg

@@ -1,9 +1,9 @@
 import React from "react";
 
-function SocialMedia2() {
+function SocialMedia2({ lightMode, setLightMode }) {
     return (
         <>
-            <center><h3>Follow me:</h3></center>
+            <center><h3 className={`${lightMode?'text-black':''}`} >Follow me:</h3></center>
             <div className="w-full h-auto py-3 flex items-center justify-center gap-4 flex-wrap">
                 <a href="https://www.linkedin.com/in/ankur-dwivedi-264209231/" target="_blank" rel="noopener noreferrer">
                     <button class="cursor-pointer w-7 h-7 flex items-center justify-center rounded-lg bg-white shadow-md shadow-gray-200 group transition-all duration-300">

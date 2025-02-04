@@ -4,28 +4,35 @@ import Home from './components/Home'
 import Navbar from './components/Navbar'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
+import { useState } from 'react'
+import Footer from './components/Footer'
 
 
 function App() {
+
+  const [lightMode, setLightMode] = useState(false);
   return (
     <>
       <header>
-        <Navbar />
+        <Navbar lightMode={lightMode} setLightMode={setLightMode} />
       </header>
       <main>
         <section id="home">
-          <Home />
+          <Home lightMode={lightMode} setLightMode={setLightMode} />
         </section>
         <section id="skills">
-          <Skills />
+          <Skills lightMode={lightMode} setLightMode={setLightMode} />
         </section>
         <section id="projects">
-          <Projects />
+          <Projects lightMode={lightMode} setLightMode={setLightMode} />
         </section>
         <section id="contact">
-          <Contact />
+          <Contact lightMode={lightMode} setLightMode={setLightMode} />
         </section>
       </main>
+      <footer>
+        <Footer />
+      </footer>
     </>
   )
 }

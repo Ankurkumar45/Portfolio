@@ -3,7 +3,7 @@ import image from './Images/my_pic.jpg';
 import TypewriterEffect from 'react-typewriter-effect';
 import Scroll from "./Scroll";
 
-function Home() {
+function Home({ lightMode, setLightMode }) {
 
     const professions = [
         'Software Engineer',
@@ -15,7 +15,7 @@ function Home() {
 
     return (
         <>
-            <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black py-20 px-4">
+            <div className={`min-h-screen bg-gradient-to-br ${lightMode ? 'bg-white' : 'from-gray-900 to-black'} transform transition-all duration-300`}>
                 <div className="my-pic1 hidden relative top-24">
                     <div className="">
                         <div className="cursor-pointer">
@@ -26,15 +26,15 @@ function Home() {
                 <div className="max-w-6xl mx-auto">
                     <div className="flex items-center justify-around min-h-screen">
                         <div className="flex flex-col justify-center min-h-screen">
-                            <div className="text-sm text-gray-300 font-bold mb-1">
-                                <h2 className="italic">Hey, I'm </h2>
-                                <span className="mb-1.5 text-5xl text-transparent bg-clip-text bg-gradient-to-r to-indigo-600 from-violet-400">Ankur Dwivedi</span><br />
+                            <div className={`text-sm ${lightMode ? 'text-gray-800' : 'text-gray-300'} font-bold mb-1 transform transition-all duration-300`}>
+                                <h2 className={`italic ${lightMode ? 'text-black' : ''} transform transition-all duration-300`}>Hey, I'm </h2>
+                                <span className={`mb-1.5 text-5xl text-transparent bg-clip-text bg-gradient-to-r ${lightMode ? 'from-gray-700 to-violet-400' : 'to-indigo-600 from-violet-400'} transform transition-all duration-300`}>Ankur Dwivedi</span><br />
                                 <div className="flex gap-1.5 text-3xl">
                                     a <span className="text-red-400">{' '}</span>
                                     <TypewriterEffect
                                         textStyle={{
                                             fontFamily: 'Arial',
-                                            color: 'rgb(123 237 219)',
+                                            color: lightMode ? 'rgb(0 0 150)' : 'rgb(123 237 219)',
                                             fontSize: '2rem',
                                             fontWeight: 'bold',
                                         }}
@@ -46,7 +46,7 @@ function Home() {
                                         multiTextLoop={true}
                                     />
                                 </div>
-                                <p className="font-bold italic text-emerald-600"><br />
+                                <p className={`font-bold italic ${lightMode ? '' : 'text-emerald-600'} transform transition-all duration-300`}><br />
                                     Passionate about creating innovative solutions and turning complex problems into elegant interfaces.
                                 </p>
                             </div><br />
@@ -101,14 +101,14 @@ function Home() {
                         <div className="my-pic2 flex items-center justify-center min-h-screen">
                             <div className="hover15 column rounded-2xl">
                                 <div className="cursor-pointer">
-                                    <figure><img src={image} className="rounded-full h-55 w-55" /></figure>
+                                    <figure><img src={image} className="rounded-full h-66 w-66" /></figure>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <Scroll />
+            <Scroll lightMode={lightMode} setLightMode={setLightMode} />
         </>
     );
 }
