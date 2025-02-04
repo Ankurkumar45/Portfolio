@@ -34,7 +34,7 @@ const Projects = ({ lightMode, setLightMode }) => {
         },
         {
             title: "Food Delivery",
-            description: "Developed a weather forecast.This project provides real-time weather updates using ReactJS.",
+            description: "A full-stack food delivery platform with real-time order tracking, secure payment integration, and an intuitive user interface.",
             image: `${project04}`,
             tech: ["HTML", "CSS", "JavaScript", "MERN"],
             liveDemo: "https://ankurkumar45.github.io/food/pro/index.html",
@@ -50,7 +50,7 @@ const Projects = ({ lightMode, setLightMode }) => {
         },
         {
             title: "BCCI Clone",
-            description: "Developed a voice assistant using Python that processes voice commands for various tasks.",
+            description: "A responsive clone of the BCCI (Board of Control for Cricket in India) website featuring live scores, match schedules, player profiles, and cricket news updates.",
             image: `${project06}`,
             tech: ["HTML", "CSS", "JavaScript", "MERN"],
             liveDemo: "https://ankurkumar45.github.io/projects/project-01/Index.html",
@@ -78,7 +78,7 @@ const Projects = ({ lightMode, setLightMode }) => {
                                 <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                                     <div className="flex gap-4">
                                         <a href={project.liveDemo} target="_blank" rel="noopener noreferrer"
-                                            className="demo-btn1 bg-indigo-500 text-white px-4 py-2 rounded-lg hover:bg-indigo-600 transition-colors">
+                                            className="bg-indigo-500 text-white px-4 py-2 rounded-lg hover:bg-indigo-600 transition-colors">
                                             Live Demo
                                         </a>
                                         <a href={project.github} target="_blank" rel="noopener noreferrer"
