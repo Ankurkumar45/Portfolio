@@ -1,41 +1,33 @@
 import React from 'react';
-import project01 from '../assets/projects/movie-recommender.jpg';
-import project02 from '../assets/projects/bank-management.jpg';
-import project03 from '../assets/projects/weather-forecast.jpg';
-import project05 from '../assets/projects/voice-assistant.jpg';
-import project04 from '../assets/projects/food-delivery.jpg';
-import project06 from '../assets/projects/BCCI.jpg';
+import project05 from '../assets/projects/CookingCollab.png';
+import project04 from '../assets/projects/movie-recommender.jpg';
+import project03 from '../assets/projects/voice-assistant.jpg';
+import project02 from '../assets/projects/food-delivery.jpg';
+import project01 from '../assets/projects/BCCI.jpg';
 
 const Projects = ({ lightMode, setLightMode }) => {
     const projects = [
         {
+            title: "Cooking Collab",
+            description: "A social media platform for food enthusiasts to share recipes, cooking tips, and food photography.",
+            image: `${project05}`,
+            tech: ["HTML", "CSS", "JavaScript", "MERN"],
+            liveDemo: "https://recipe-sharing-platform-nine-lemon.vercel.app/",
+            github: "https://github.com/Ankurkumar45/CookingCollab"
+        }
+        ,
+        {
             title: "Movie-Recomender",
             description: "Developed a movie recommendation system using collaborative filtering and content-based filtering techniques.",
-            image: `${project01}`,
+            image: `${project04}`,
             tech: ["Jupyter Notebook", "NumPy", "Pandas", "Matplotlib"],
             liveDemo: "https://demo.com",
             github: "https://github.com/Ankurkumar45/Movie-Recomender"
         },
         {
-            title: "Bank Management System",
-            description: "Designed a user-friendly GUI using Java Swing for enhanced user interaction and experience.",
-            image: `${project02}`,
-            tech: ["Java", "Java Swing", "OOP", "MySQL"],
-            liveDemo: "https://demo.com",
-            github: "https://github.com/Ankurkumar45/Bank-Management-System-Java-Project-"
-        },
-        {
-            title: "Weather Forecast",
-            description: "Developed a weather forecast.This project provides real-time weather updates using ReactJS.",
-            image: `${project03}`,
-            tech: ["HTML", "CSS", "React", 'Weather API'],
-            liveDemo: "https://ankurkumar45.github.io/Weather-update/",
-            github: "https://github.com/Ankurkumar45/Weather-update"
-        },
-        {
             title: "Food Delivery",
             description: "A full-stack food delivery platform with real-time order tracking, secure payment integration, and an intuitive user interface.",
-            image: `${project04}`,
+            image: `${project03}`,
             tech: ["HTML", "CSS", "JavaScript", "MERN"],
             liveDemo: "https://ankurkumar45.github.io/food/pro/index.html",
             github: "https://github.com/Ankurkumar45/food"
@@ -43,7 +35,7 @@ const Projects = ({ lightMode, setLightMode }) => {
         {
             title: "Voice Assistant",
             description: "Developed a voice assistant using Python that processes voice commands for various tasks.",
-            image: `${project05}`,
+            image: `${project02}`,
             tech: ["Jupyter Notebook", "NLTK", "Pyttsx3", "SpeechRecognition", "PyWatkit"],
             liveDemo: "https://demo.com",
             github: "https://github.com/Ankurkumar45/Voice-Assistant"
@@ -51,7 +43,7 @@ const Projects = ({ lightMode, setLightMode }) => {
         {
             title: "BCCI Clone",
             description: "A responsive clone of the BCCI (Board of Control for Cricket in India) website featuring live scores, match schedules, player profiles, and cricket news updates.",
-            image: `${project06}`,
+            image: `${project01}`,
             tech: ["HTML", "CSS", "JavaScript", "MERN"],
             liveDemo: "https://ankurkumar45.github.io/projects/project-01/Index.html",
             github: "https://github.com/Ankurkumar45/projects"
