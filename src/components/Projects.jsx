@@ -1,4 +1,5 @@
 import React from 'react';
+import project06 from '../assets/projects/k72.png';
 import project05 from '../assets/projects/CookingCollab.png';
 import project04 from '../assets/projects/movie-recommender.jpg';
 import project03 from '../assets/projects/voice-assistant.jpg';
@@ -7,6 +8,14 @@ import project01 from '../assets/projects/BCCI.jpg';
 
 const Projects = ({ lightMode, setLightMode }) => {
     const projects = [
+        {
+            title: "K72",
+            description: "A K72 clone, utilized hand-crafted animations.",
+            image: `${project06}`,
+            tech: ["ReactJS", "Hooks", "FramerMotion", "GSAP", "TailwindCSS"],
+            liveDemo: "https://animations-drab.vercel.app/",
+            github: "https://github.com/Ankurkumar45/Animations/tree/main/k72"
+        },
         {
             title: "Cooking Collab",
             description: "A social media platform for food enthusiasts to share recipes, cooking tips, and food photography.",
