@@ -4,7 +4,6 @@ import project05 from '../assets/projects/CookingCollab.png';
 import project04 from '../assets/projects/movie-recommender.jpg';
 import project03 from '../assets/projects/voice-assistant.jpg';
 import project02 from '../assets/projects/food-delivery.jpg';
-import project01 from '../assets/projects/BCCI.jpg';
 
 const Projects = ({ lightMode, setLightMode }) => {
     const projects = [
@@ -48,14 +47,6 @@ const Projects = ({ lightMode, setLightMode }) => {
             tech: ["Jupyter Notebook", "NLTK", "Pyttsx3", "SpeechRecognition", "PyWatkit"],
             liveDemo: "https://demo.com",
             github: "https://github.com/Ankurkumar45/Voice-Assistant"
-        },
-        {
-            title: "BCCI Clone",
-            description: "A responsive clone of the BCCI (Board of Control for Cricket in India) website featuring live scores, match schedules, player profiles, and cricket news updates.",
-            image: `${project01}`,
-            tech: ["HTML", "CSS", "JavaScript", "MERN"],
-            liveDemo: "https://ankurkumar45.github.io/projects/project-01/Index.html",
-            github: "https://github.com/Ankurkumar45/projects"
         }
     ];
 

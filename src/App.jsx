@@ -15,6 +15,7 @@ function App() {
     <>
       <header>
         <Navbar lightMode={lightMode} setLightMode={setLightMode} />
+        {/* <MainNavBar /> */}
       </header>
       <main>
         <section id="home">

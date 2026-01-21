@@ -5,7 +5,7 @@ import CurrentTime from './CurrentTime';
 
 function Navbar({ lightMode, setLightMode }) {
     const [isOpen, setIsOpen] = useState(false);
-    const barList = ['Home', 'Skills', 'Projects', 'Contact'];
+    const barList = ['Home', 'Skills', 'Projects', 'Contact', 'Blog'];
 
     const handleNavClick = (e, itemId) => {
         e.preventDefault();
