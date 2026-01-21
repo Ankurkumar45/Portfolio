@@ -1,5 +1,5 @@
 import React from 'react';
-import project06 from '../assets/projects/k72.png';
+import project06 from '../assets/projects/K72.png';
 import project05 from '../assets/projects/CookingCollab.png';
 import project04 from '../assets/projects/movie-recommender.jpg';
 import project03 from '../assets/projects/voice-assistant.jpg';
