@@ -1,16 +1,24 @@
 import React from 'react';
-import project06 from '../assets/projects/K72.png';
-import project05 from '../assets/projects/CookingCollab.png';
-import project04 from '../assets/projects/movie-recommender.jpg';
-import project03 from '../assets/projects/voice-assistant.jpg';
-import project02 from '../assets/projects/food-delivery.jpg';
+import project05 from '../assets/projects/GitHub-User-Timeline.png'
+import project04 from '../assets/projects/K72.png';
+import project03 from '../assets/projects/CookingCollab.png';
+import project02 from '../assets/projects/voice-assistant.jpg';
+import project01 from '../assets/projects/food-delivery.jpg';
 
 const Projects = ({ lightMode, setLightMode }) => {
     const projects = [
         {
+            title: "GitHub-User-Timeline",
+            description: "A ReactJS application that fetches and displays a GitHub user's timeline using the GitHub API.",
+            image: `${project05}`,
+            tech: ["ReactJS", "Hooks", "GitHub API", "TailwindCSS"],
+            liveDemo: "https://generate-user-github-timeline-uris.vercel.app/",
+            github: "https://github.com/Ankurkumar45/generate-user-github-timeline.git"
+        },
+        {
             title: "K72",
             description: "A K72 clone, utilized hand-crafted animations.",
-            image: `${project06}`,
+            image: `${project04}`,
             tech: ["ReactJS", "Hooks", "FramerMotion", "GSAP", "TailwindCSS"],
             liveDemo: "https://animations-drab.vercel.app/",
             github: "https://github.com/Ankurkumar45/Animations/tree/main/k72"
@@ -18,24 +26,15 @@ const Projects = ({ lightMode, setLightMode }) => {
         {
             title: "Cooking Collab",
             description: "A social media platform for food enthusiasts to share recipes, cooking tips, and food photography.",
-            image: `${project05}`,
+            image: `${project03}`,
             tech: ["HTML", "CSS", "JavaScript", "MERN"],
             liveDemo: "https://recipe-sharing-platform-nine-lemon.vercel.app/",
             github: "https://github.com/Ankurkumar45/CookingCollab"
-        }
-        ,
-        {
-            title: "Movie-Recomender",
-            description: "Developed a movie recommendation system using collaborative filtering and content-based filtering techniques.",
-            image: `${project04}`,
-            tech: ["Jupyter Notebook", "NumPy", "Pandas", "Matplotlib"],
-            liveDemo: "https://demo.com",
-            github: "https://github.com/Ankurkumar45/Movie-Recomender"
         },
         {
             title: "Food Delivery",
             description: "A full-stack food delivery platform with real-time order tracking, secure payment integration, and an intuitive user interface.",
-            image: `${project03}`,
+            image: `${project01}`,
             tech: ["HTML", "CSS", "JavaScript", "MERN"],
             liveDemo: "https://ankurkumar45.github.io/food/pro/index.html",
             github: "https://github.com/Ankurkumar45/food"
