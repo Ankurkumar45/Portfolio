@@ -1,107 +1,114 @@
-import React, { useRef } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { resume } from "../data/resume";
 
-const Skills = ({ lightMode }) => {
-    const scrollRef = useRef(null);
-    const animationRef = useRef(null);
+export default function Skills() {
+    const [visible, setVisible] = useState(false);
+    const ref = useRef(null);
 
-    const iconUrl = [
-        "c-plain", "cplusplus-plain", "java-plain", "python-plain",
-        "html5-plain", "css3-plain", "tailwindcss-original",
-        "javascript-plain", "php-plain", "react-plain",
-        "nodejs-plain-wordmark", "express-original",
-        "mysql-original", "mongodb-plain", "wordpress-plain",
-        "numpy-plain", "pandas-plain", "matplotlib-plain",
-        "vscode-plain", "jupyter-plain", "pycharm-plain", "intellij-plain"
-    ];
+    useEffect(() => {
+        const io = new IntersectionObserver(
+            ([e]) => { if (e.isIntersecting) setVisible(true); },
+            { threshold: 0.2 }
+        );
+        if (ref.current) io.observe(ref.current);
+        return () => io.disconnect();
+    }, []);
 
-    const skills = [
-        "C", "C++", "Java", "Python", "HTML5", "CSS3", "TailwindCSS",
-        "JavaScript", "PHP", "React.Js", "Node.Js", "Express.Js",
-        "MySql", "MongoDB", "WordPress", "NumPy", "Pandas", "MatplotLib",
-        "VS Code", "Jupyter Notebook", "PyCharm", "IntelliJ IDEA"
-    ];
-
-    const scroll = (dir) => {
-        if (scrollRef.current) {
-            scrollRef.current.scrollBy({
-                left: dir === "left" ? -200 : 200,
-                behavior: "smooth",
-            });
-        }
-    };
-
-    const iconlink = () => {
-        return iconUrl.map((icon, index) => (
-            <div
-                key={icon}
-                className="group relative flex-shrink-0 p-6 transition-all duration-300"
-            >
-                <button className="cursor-pointer">
-                    <i
-                        className={`devicon-${icon} text-5xl ${lightMode ? "text-gray-600" : "text-white"
-                            }`}
-                    ></i>
-                </button>
-                <span
-                    className={`absolute -top-1 left-1/2 -translate-x-1/2
-          scale-0 group-hover:scale-100 transition-all duration-300
-          px-2 py-1 rounded-md text-sm font-medium shadow-md
-          ${lightMode
-                            ? "bg-white text-gray-600 border border-gray-300"
-                            : "bg-gray-800 text-white"}`}
-                >
-                    {skills[index]}
-                </span>
-            </div>
-        ));
-    };
+    const designSkills = resume.skills.filter((s) => s.category === "Design");
+    const devSkills = resume.skills.filter((s) => s.category === "Development");
 
     return (
+        <section id="skills" className="relative py-28 overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-900/5 to-transparent" />
+
+            <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+                {/* Heading */}
+                <div className="mb-16 max-w-2xl">
+                    <div className="flex items-center gap-3 mb-4">
+                        <span className="h-[1px] w-10 bg-gradient-to-r from-transparent to-purple-500" />
+                        <span className="text-xs tracking-[0.3em] text-cyan-300 font-mono">SKILLS & EXPERTISE</span>
+                    </div>
+                    <h2 className="text-4xl sm:text-5xl font-bold text-white leading-tight">
+                        Crafted at the intersection of
+                        <span className="text-gradient"> design </span> and
+                        <span className="text-gradient"> engineering</span>.
+                    </h2>
+                    <p className="mt-4 text-white/60 leading-relaxed">
+                        A blend of visual craft, systems thinking, and production-grade code — sharpened over
+                        three years of shipping real products.
+                    </p>
+                </div>
+
+                {/* Two-column grid */}
+                <div ref={ref} className="grid lg:grid-cols-2 gap-6">
+                    {/* Design */}
+                    <SkillColumn title="Design" icon="✦" skills={designSkills} visible={visible} delay={0} />
+                    {/* Development */}
+                    <SkillColumn title="Development" icon="⟨⟩" skills={devSkills} visible={visible} delay={150} />
+                </div>
+
+                {/* Tools */}
+                <div className="mt-14 grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-8 gap-3">
+                    {["Figma", "React", "TypeScript", "Tailwind", "Next.js", "Three.js", "Framer", "Notion"].map(
+                        (tool, i) => (
+                            <div
+                                key={tool}
+                                className="glass glass-hover rounded-lg px-4 py-3 text-center text-sm text-white/80 font-medium transition-all"
+                                style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(20px)", transition: `all 0.6s ease ${200 + i * 60}ms` }}
+                            >
+                                {tool}
+                            </div>
+                        )
+                    )}
+                </div>
+            </div>
+        </section>
+    );
+}
+
+function SkillColumn({
+    title,
+    icon,
+    skills,
+    visible,
+    delay,
+}) {
+    return (
         <div
-            className={`bg-gradient-to-br ${lightMode ? "bg-white" : "from-gray-900 to-black"
-                } transition-all duration-300 p-10`}
+            className="glass rounded-2xl p-8 transition-all"
+            style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(20px)", transition: `all 0.7s ease ${delay}ms` }}
         >
-            <div className="max-w-6xl mx-auto">
-                <h2
-                    className={`text-4xl md:text-5xl font-bold text-center mb-16 ${lightMode ? "text-gray-500" : "text-white"
-                        }`}
-                >
-                    My{" "}
-                    <span className={lightMode ? "text-gray-700" : "text-indigo-500"}>
-                        Skills
-                    </span>
-                </h2>
+            <div className="flex items-center gap-3 mb-8">
+                <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-purple-500/30 to-cyan-500/30 border border-purple-500/30 flex items-center justify-center text-purple-300 font-bold">
+                    {icon}
+                </div>
+                <h3 className="text-xl font-semibold text-white">{title}</h3>
+                <span className="ml-auto text-xs text-white/40 font-mono">
+                    {String(skills.length).padStart(2, "0")} SKILLS
+                </span>
+            </div>
 
-                <div className="flex items-center justify-center gap-6 py-12 px-6">
-                    <button
-                        onClick={() => scroll("left")}
-                        className={`p-4 hover:scale-110 transition cursor-pointer ${lightMode ? "text-gray-700" : "text-white"
-                            }`}
-                    >
-                        <ChevronLeft size={32} />
-                    </button>
-
-                    <div
-                        ref={scrollRef}
-                        className="flex-1 overflow-x-hidden scroll-smooth h-32"
-                    >
-                        <div className="flex items-center gap-8 px-6 h-full">
-                            {iconlink()}
+            <div className="space-y-5">
+                {skills.map((s, i) => (
+                    <div key={s.name}>
+                        <div className="flex items-center justify-between mb-2">
+                            <span className="text-sm font-medium text-white/90">{s.name}</span>
+                            <span className="text-xs text-white/50 font-mono">{s.level}%</span>
+                        </div>
+                        <div className="h-1.5 rounded-full bg-white/5 overflow-hidden">
+                            <div
+                                className="h-full rounded-full bg-gradient-to-r from-purple-500 via-violet-500 to-cyan-400 relative"
+                                style={{
+                                    width: visible ? `${s.level}%` : "0%",
+                                    transition: `width 1.4s cubic-bezier(0.22, 1, 0.36, 1) ${delay + i * 100}ms`,
+                                }}
+                            >
+                                <div className="absolute inset-y-0 right-0 w-2 bg-white/60 animate-pulse rounded-full" />
+                            </div>
                         </div>
                     </div>
-
-                    <button
-                        onClick={() => scroll("right")}
-                        className={`p-4 hover:scale-110 transition cursor-pointer ${lightMode ? "text-gray-700" : "text-white"
-                            }`}
-                    >
-                        <ChevronRight size={32} />
-                    </button>
-                </div>
+                ))}
             </div>
         </div>
     );
-};
-
-export default Skills;
+}

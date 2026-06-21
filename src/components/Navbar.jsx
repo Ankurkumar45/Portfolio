@@ -1,72 +1,133 @@
-import React, { useState } from 'react';
-import Toggle from './Toggle';
-import SocialMedia2 from './SocialMedia2';
-import CurrentTime from './CurrentTime';
+import { useEffect, useState } from "react";
+import { cn } from "../utils/cn";
 
-function Navbar({ lightMode, setLightMode }) {
-    const [isOpen, setIsOpen] = useState(false);
-    const barList = ['Home', 'Skills', 'Projects', 'Contact', 'Blog'];
+const NAV = [
+    { id: "home", label: "HOME" },
+    { id: "about", label: "ABOUT" },
+    { id: "skills", label: "SKILLS" },
+    { id: "projects", label: "PROJECTS" },
+    { id: "resume", label: "RESUME" },
+    { id: "contact", label: "CONTACT" },
+];
 
-    const handleNavClick = (e, itemId) => {
-        e.preventDefault();
-        const element = document.getElementById(itemId);
-        element?.scrollIntoView({ behavior: 'smooth' });
-        setIsOpen(false);
-    };
+export default function Navbar() {
+    const [active, setActive] = useState("home");
+    const [scrolled, setScrolled] = useState(false);
+    const [mobileOpen, setMobileOpen] = useState(false);
+    const [theme, setTheme] = useState("dark");
+
+    useEffect(() => {
+        const onScroll = () => {
+            setScrolled(window.scrollY > 20);
+
+            const sections = NAV.map((n) => document.getElementById(n.id)).filter(Boolean);
+            let current = "home";
+            for (const s of sections) {
+                const rect = s.getBoundingClientRect();
+                if (rect.top <= 120) current = s.id;
+            }
+            setActive(current);
+        };
+        window.addEventListener("scroll", onScroll, { passive: true });
+        onScroll();
+        return () => window.removeEventListener("scroll", onScroll);
+    }, []);
+
+    const toggleTheme = () => setTheme((t) => (t === "dark" ? "light" : "dark"));
 
     return (
-        <nav className="fixed w-full top-0 z-50">
-            <div className="bg-black/20 backdrop-blur-md">
-                <div className="max-w-screen-xl mx-auto px-4">
-                    <div className="flex justify-between items-center h-16">
-                        <a href="/" className="flex items-center">
-                            <span className={`text-2xl font-semibold ${lightMode?'text-amber-900':'text-white'}`}>
-                                <span className={`${lightMode ? 'text-amber-500' : 'text-blue-500'} italic text-5xl transform transition-all duration-300`}>A</span>nkur
-                            </span>
+        <header
+            className={cn(
+                "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+                scrolled
+                    ? "backdrop-blur-xl bg-[#070711]/70 border-b border-white/5"
+                    : "bg-transparent border-b border-transparent"
+            )}
+        >
+            <div className="mx-auto max-w-7xl px-6 lg:px-10 h-16 flex items-center justify-between">
+                {/* Nav */}
+                <nav className="hidden md:flex items-center gap-1">
+                    {NAV.map((n) => (
+                        <a
+                            key={n.id}
+                            href={`#${n.id}`}
+                            className={cn(
+                                "relative px-3 py-2 text-[11px] tracking-[0.2em] font-medium transition-colors",
+                                active === n.id ? "text-white" : "text-white/50 hover:text-white/80"
+                            )}
+                        >
+                            {active === n.id && (
+                                <span className="absolute inset-0 rounded-md bg-gradient-to-r from-purple-500/20 to-cyan-500/10 border border-purple-500/30" />
+                            )}
+                            <span className="relative">{n.label}</span>
                         </a>
-                        <div className="flex items-center gap-4">
-                            <Toggle lightMode={lightMode} setLightMode={setLightMode} />
-                            <button
-                                onClick={() => setIsOpen(!isOpen)}
-                                className="cursor-pointer p-2 rounded-lg transition-colors z-50"
-                                aria-label="Toggle Menu"
-                            >
-                                <div className="w-6 h-5 relative transform transition-all duration-300">
-                                    <span className={`absolute h-0.5 w-6 ${lightMode ? 'bg-black' : 'bg-white'} transform transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-2.5' : '-translate-y-2'}`} />
-                                    <span className={`absolute h-0.5 w-6 ${lightMode ? 'bg-black' : 'bg-white'} transform transition-all duration-300 ${isOpen ? 'opacity-0' : 'opacity-100'}`} />
-                                    <span className={`absolute h-0.5 w-6 ${lightMode ? 'bg-black' : 'bg-white'} transform transition-all duration-300 ${isOpen ? '-rotate-45 translate-y-2.5' : 'translate-y-2'}`} />
-                                </div>
-                            </button>
+                    ))}
+                </nav>
+
+                {/* Center logo */}
+                <a href="#home" className="flex items-center gap-2 group md:absolute md:left-1/2 md:-translate-x-1/2">
+                    <span className="text-xs text-purple-400 font-mono">&lt;</span>
+                    <span className="font-semibold tracking-tight text-white group-hover:text-gradient transition-all text-lg">
+                        Ankur
+                    </span>
+                    <span className="text-xs text-purple-400 font-mono">/&gt;</span>
+                </a>
+
+                {/* Right controls */}
+                <div className="flex items-center gap-3">
+                    {/* Theme toggle */}
+                    <button
+                        onClick={toggleTheme}
+                        aria-label="Toggle theme"
+                        className="relative h-7 w-12 rounded-full bg-white/10 border border-white/15 flex items-center p-1 transition-colors hover:bg-white/15"
+                    >
+                        <span
+                            className={cn(
+                                "h-5 w-5 rounded-full transition-all duration-500 shadow-md flex items-center justify-center text-[10px]",
+                                theme === "dark"
+                                    ? "translate-x-5 bg-gradient-to-br from-purple-500 to-cyan-400 text-white"
+                                    : "translate-x-0 bg-white text-amber-400"
+                            )}
+                        >
+                            {theme === "dark" ? "●" : "☀"}
+                        </span>
+                    </button>
+
+                    {/* Mobile menu */}
+                    <button
+                        onClick={() => setMobileOpen((o) => !o)}
+                        className="md:hidden h-9 w-9 flex items-center justify-center rounded-md bg-white/5 border border-white/10"
+                        aria-label="Menu"
+                    >
+                        <div className="space-y-1">
+                            <span className={cn("block h-0.5 w-5 bg-white transition-all", mobileOpen && "translate-y-1.5 rotate-45")} />
+                            <span className={cn("block h-0.5 w-5 bg-white transition-all", mobileOpen && "opacity-0")} />
+                            <span className={cn("block h-0.5 w-5 bg-white transition-all", mobileOpen && "-translate-y-1.5 -rotate-45")} />
                         </div>
+                    </button>
+                </div>
+            </div>
+
+            {/* Mobile dropdown */}
+            {mobileOpen && (
+                <div className="md:hidden border-t border-white/5 bg-[#070711]/95 backdrop-blur-xl">
+                    <div className="px-6 py-4 flex flex-col gap-1">
+                        {NAV.map((n) => (
+                            <a
+                                key={n.id}
+                                href={`#${n.id}`}
+                                onClick={() => setMobileOpen(false)}
+                                className={cn(
+                                    "px-3 py-2 text-xs tracking-widest rounded-md",
+                                    active === n.id ? "bg-purple-500/15 text-white" : "text-white/60"
+                                )}
+                            >
+                                {n.label}
+                            </a>
+                        ))}
                     </div>
                 </div>
-            </div>
-            <div className={`fixed top-0 left-0 h-screen w-64 bg-gradient-to-r ${lightMode ? 'from-white/95 to-white/90' : 'from-black/95 to-black/90'} transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
-                <div className="pt-20">
-                    <ul className="space-y-1">
-                        {barList.map((item, index) => (
-                            <li key={item}
-                                style={{
-                                    animationDelay: `${index * 100}ms`,
-                                }}
-                                className={`transform transition-all duration-300 ${isOpen ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'}`}
-                            >
-                                <a
-                                    href={`#${item.toLowerCase()}`}
-                                    onClick={(e) => handleNavClick(e, item.toLowerCase())}
-                                    className={`block px-6 py-3 ${lightMode ? 'text-black' : 'text-white'} text-lg font-medium hover:bg-white/10 hover:pl-8 transition-all duration-300 relative group`}>
-                                    <span className="relative z-10">{item}</span>
-                                    <span className={`absolute left-0 top-0 w-0 h-full ${lightMode ? 'bg-amber-500/20' : 'bg-blue-500/20'} transition-all duration-300 group-hover:w-full`}></span>
-                                </a>
-                            </li>
-                        ))}
-                    </ul>
-                    <SocialMedia2 lightMode={lightMode} setLightMode={setLightMode} /><br />
-                    <CurrentTime />
-                </div>
-            </div>
-        </nav>
+            )}
+        </header>
     );
 }
-
-export default Navbar;

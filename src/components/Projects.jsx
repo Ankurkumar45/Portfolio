@@ -1,103 +1,111 @@
-import React from 'react';
-import project05 from '../assets/projects/GitHub-User-Timeline.png'
-import project04 from '../assets/projects/K72.png';
-import project03 from '../assets/projects/CookingCollab.png';
-import project02 from '../assets/projects/voice-assistant.jpg';
-import project01 from '../assets/projects/food-delivery.jpg';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import { EyeIcon, GithubIcon } from "lucide-react";
 
-const Projects = ({ lightMode, setLightMode }) => {
-    const projects = [
-        {
-            title: "GitHub-User-Timeline",
-            description: "A ReactJS application that fetches and displays a GitHub user's timeline using the GitHub API.",
-            image: `${project05}`,
-            tech: ["ReactJS", "Hooks", "GitHub API", "TailwindCSS"],
-            liveDemo: "https://generate-user-github-timeline-uris.vercel.app/",
-            github: "https://github.com/Ankurkumar45/generate-user-github-timeline.git"
-        },
-        {
-            title: "K72",
-            description: "A K72 clone, utilized hand-crafted animations.",
-            image: `${project04}`,
-            tech: ["ReactJS", "Hooks", "FramerMotion", "GSAP", "TailwindCSS"],
-            liveDemo: "https://animations-drab.vercel.app/",
-            github: "https://github.com/Ankurkumar45/Animations/tree/main/k72"
-        },
-        {
-            title: "Cooking Collab",
-            description: "A social media platform for food enthusiasts to share recipes, cooking tips, and food photography.",
-            image: `${project03}`,
-            tech: ["HTML", "CSS", "JavaScript", "MERN"],
-            liveDemo: "https://recipe-sharing-platform-nine-lemon.vercel.app/",
-            github: "https://github.com/Ankurkumar45/CookingCollab"
-        },
-        {
-            title: "Food Delivery",
-            description: "A full-stack food delivery platform with real-time order tracking, secure payment integration, and an intuitive user interface.",
-            image: `${project01}`,
-            tech: ["HTML", "CSS", "JavaScript", "MERN"],
-            liveDemo: "https://ankurkumar45.github.io/food/pro/index.html",
-            github: "https://github.com/Ankurkumar45/food"
-        },
-        {
-            title: "Voice Assistant",
-            description: "Developed a voice assistant using Python that processes voice commands for various tasks.",
-            image: `${project02}`,
-            tech: ["Jupyter Notebook", "NLTK", "Pyttsx3", "SpeechRecognition", "PyWatkit"],
-            liveDemo: "https://demo.com",
-            github: "https://github.com/Ankurkumar45/Voice-Assistant"
-        }
-    ];
+import FuelDrop from "../assets/projects/FuelDrop.png";
+import GitHubUserTimeline from "../assets/projects/GitHubUserTimeline.png";
+import CookingCollab from "../assets/projects/CookingCollab.png";
 
+const PROJECTS = [
+    {
+        title: "FuelDrop",
+        year: "2026",
+        desc: "A MERN stack platform to find nearby petrol pumps, order fuel delivery, and send emergency SOS alerts.",
+        tags: ["React.js", "Node.js", "MongoDB", "Express.js", "Tailwind CSS", "Geolocation APIs", "Leaflet.js"],
+        image: { src: FuelDrop, alt: "FuelDrop project logo" },
+        liveLink: "https://fuel-drop-zeta.vercel.app/login",
+        githubLink: "https://github.com/Ankurkumar45/FuelDrop.git",
+    },
+    {
+        title: "GitHub User Timeline",
+        year: "2026",
+        desc: "A responsive web application that displays a user's GitHub activity timeline with filtering and search capabilities.",
+        tags: ["React.js", "hooks", "localStorage", "Tailwind CSS", "GitHub API"],
+        image: { src: GitHubUserTimeline, alt: "GitHub User Timeline project logo" },
+        liveLink: "https://generate-user-github-timeline-uris.vercel.app/",
+        githubLink: "https://github.com/Ankurkumar45/generate-user-github-timeline.git",
+    },
+    {
+        title: "CookingCollab",
+        year: "2025",
+        desc: "A collaborative web app for food enthusiasts to share, discover, and cook recipes together in real time.",
+        tags: ["React.js", "Node.js", "MongoDB", "Express.js", "Tailwind CSS"],
+        image: { src: CookingCollab, alt: "CookingCollab project logo" },
+        liveLink: "https://cooking-collab-8xyb.vercel.app/",
+        githubLink: "https://github.com/Ankurkumar45/CookingCollab.git",
+    },
+];
+
+export default function Projects() {
     return (
-        <div className={`min-h-screen bg-gradient-to-br ${lightMode ? 'bg-white' : 'from-gray-900 to-black'} transform transition-all duration-300 py-20 px-4`}>
-            <div className="max-w-6xl mx-auto">
-                <h2 className={`text-4xl md:text-5xl font-bold text-center mb-16 ${lightMode ? 'text-gray-500' : ''} transform transition-all duration-300`}>
-                    My <span className={`${lightMode ? 'text-gray-700' : 'text-indigo-500'} transform transition-all duration-300`}>Projects</span>
-                </h2>
+        <section id="projects" className="relative py-28">
+            <div className="absolute inset-0 grid-bg opacity-40" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-purple-600/10 blur-3xl" />
+            <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+                {/* Heading */}
+                <div className="mb-16 flex flex-wrap items-end justify-between gap-6">
+                    <div className="max-w-2xl">
+                        <div className="flex items-center gap-3 mb-4">
+                            <span className="h-[1px] w-10 bg-gradient-to-r from-transparent to-purple-500" />
+                            <span className="text-xs tracking-[0.3em] text-cyan-300 font-mono">PROJECT WORK</span>
+                        </div>
+                        <h2 className="text-4xl sm:text-5xl font-bold text-white leading-tight">
+                            Recent projects I've <span className="text-gradient">designed & built</span>.
+                        </h2>
+                    </div>
+                </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {projects.map((project, index) => (
-                        <div key={index}
-                            className={`group ${lightMode ? 'bg-gray-700' : 'bg-white/10'} backdrop-blur-sm rounded-xl overflow-hidden hover:${lightMode ? '' : 'bg-white/20'} transition-all duration-300 transform hover:-translate-y-2`}>
-                            <div className="relative overflow-hidden">
-                                <img
-                                    src={project.image}
-                                    alt={project.title}
-                                    className="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-300"
-                                />
-                                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                    <div className="flex gap-4">
-                                        <a href={project.liveDemo} target="_blank" rel="noopener noreferrer"
-                                            className="bg-indigo-500 text-white px-4 py-2 rounded-lg hover:bg-indigo-600 transition-colors">
-                                            Live Demo
-                                        </a>
-                                        <a href={project.github} target="_blank" rel="noopener noreferrer"
-                                            className="github-btn bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-900 transition-colors">
-                                            GitHub
-                                        </a>
+                <div className="grid gap-6 sm:grid-cols-2">
+                    {PROJECTS.map((project, index) => {
+                        return (
+                            <div key={project.title} className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-slate-950/40 shadow-2xl shadow-black/30 h-[400px] w-[450px]">
+                                <div className="absolute inset-0 bg-slate-950/80" />
+                                <div className="relative z-10 flex h-full items-center justify-center p-8 object-contain transition-opacity duration-500 group-hover:opacity-0 pointer-events-none" style={{ backgroundImage: `url(${project.image.src})`, backgroundSize: "cover", backgroundPosition: "center" }}></div>
 
+                                <div
+                                    className={`absolute inset-y-0 left-0 w-full sm:w-[70%] z-20 bg-slate-950/95 p-8 flex flex-col justify-center gap-4 transition-transform duration-500 ease-out -translate-x-full group-hover:translate-x-0`}
+                                >
+                                    <span className="text-xs tracking-[0.3em] text-cyan-300 font-mono">{project.year}</span>
+                                    <h3 className="text-3xl font-bold text-white">{project.title}</h3>
+                                    <p className="text-white/70 leading-relaxed">{project.desc}</p>
+                                    <div className="flex flex-wrap gap-2">
+                                        {project.tags.map((tag) => (
+                                            <span
+                                                key={tag}
+                                                className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] text-white/80"
+                                            >
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+                                    <div className="flex gap-4 mt-4">
+                                        {project.liveLink && (
+                                            <a
+                                                href={project.liveLink}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="text-sm font-medium text-cyan-400 hover:text-cyan-300 transition-colors duration-300 cursor-pointer"
+                                            >
+                                                <EyeIcon className="mr-1" />
+                                            </a>
+                                        )}
+                                        {project.githubLink && (
+                                            <a
+                                                href={project.githubLink}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="text-sm font-medium text-cyan-400 hover:text-cyan-300 transition-colors duration-300 cursor-pointer"
+                                            >
+                                                <GithubIcon className="mr-1" />
+                                            </a>
+                                        )}
                                     </div>
                                 </div>
                             </div>
-
-                            <div className="p-6">
-                                <h3 className="text-xl font-bold text-white mb-2 text-center">{project.title}</h3>
-                                <p className="text-gray-300 mb-4">{project.description}</p>
-                                <div className="flex flex-wrap gap-2">
-                                    {project.tech.map((tech, i) => (
-                                        <span key={i} className="bg-indigo-500/20 text-indigo-300 px-3 py-1 rounded-full text-sm">
-                                            {tech}
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
             </div>
-        </div>
+        </section>
     );
-};
-
-export default Projects;
+}

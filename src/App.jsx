@@ -1,40 +1,31 @@
-import './App.css'
-import Skills from './components/Skills'
-import Home from './components/Home'
-import Navbar from './components/Navbar'
-import Projects from './components/Projects'
-import Contact from './components/Contact'
-import { useState } from 'react'
-import Footer from './components/Footer'
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import About, { Skills } from "./components/Sections";
+import Projects from "./components/Projects";
+import ResumeSection from "./components/Resume";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
+import { useScrollProgress } from "./hooks/useReveal";
 
+export default function App() {
+  useScrollProgress();
 
-function App() {
-
-  const [lightMode, setLightMode] = useState(false);
   return (
-    <>
-      <header>
-        <Navbar lightMode={lightMode} setLightMode={setLightMode} />
-        {/* <MainNavBar /> */}
-      </header>
+    <div className="relative min-h-screen bg-[#07070d] text-white overflow-x-hidden">
+      <div id="scroll-progress" className="scroll-progress" />
+
+      <Navbar />
+
       <main>
-        <section id="home">
-          <Home lightMode={lightMode} setLightMode={setLightMode} />
-        </section>
-        <section id="skills">
-          <Skills lightMode={lightMode} setLightMode={setLightMode} />
-        </section>
-        <section id="projects">
-          <Projects lightMode={lightMode} setLightMode={setLightMode} />
-        </section>
-        <section id="contact">
-          <Contact lightMode={lightMode} setLightMode={setLightMode} />
-        </section>
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <ResumeSection />
+        <Contact />
       </main>
-      <footer>
-        <Footer />
-      </footer>
-    </>
-  )
+
+      <Footer />
+    </div>
+  );
 }
-export default App
