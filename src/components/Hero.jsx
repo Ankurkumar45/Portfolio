@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { personal } from "../data/resume";
+import myImage from "../assets/my_images/Ankur_India.png";
 
 const ROLES = ["MERN Stack Developer", "Frontend Developer", "Backend Developer", "Tech Enthusiast", "Chess Player"];
 
@@ -162,41 +163,11 @@ export default function Hero() {
                         {/* Profile disc */}
                         <div className="absolute inset-6 rounded-full bg-gradient-to-br from-purple-600/30 via-indigo-600/20 to-cyan-500/30 blur-2xl" />
                         <div className="relative h-full w-full rounded-full overflow-hidden border border-white/10 shadow-2xl glow-purple">
-                            <div className="absolute inset-0 bg-gradient-to-br from-purple-600 via-violet-600 to-cyan-500" />
-                            <div className="absolute inset-0 grid-bg opacity-40 mix-blend-overlay" />
                             {/* Initials */}
                             <div className="absolute inset-0 flex items-center justify-center">
-                                <div className="text-center">
-                                    <div className="font-bold text-white/95 text-7xl sm:text-8xl tracking-tight">AD</div>
-                                    <div className="mt-2 text-[10px] tracking-[0.4em] text-white/60 font-mono">DESIGNER · DEV</div>
-                                </div>
+                                <img src={myImage} alt="Ankur Kumar" className="rounded-full object-cover border-4 border-white/20 shadow-lg" />
                             </div>
-                            {/* Sparkle dots */}
-                            <span className="absolute top-10 right-14 h-2 w-2 rounded-full bg-cyan-300 animate-pulse" />
-                            <span className="absolute bottom-16 left-10 h-1.5 w-1.5 rounded-full bg-purple-300 animate-pulse" style={{ animationDelay: "0.6s" }} />
-                            <span className="absolute top-1/2 right-6 h-1 w-1 rounded-full bg-white animate-pulse" style={{ animationDelay: "1.2s" }} />
                         </div>
-
-                        {/* Floating badge */}
-                        {/* <div className="absolute -bottom-2 -left-4 glass rounded-2xl px-4 py-3 flex items-center gap-3 animate-float-slow">
-                            <div className="h-9 w-9 rounded-lg bg-gradient-to-br from-purple-500 to-cyan-400 flex items-center justify-center text-white font-bold text-sm">
-                                ✦
-                            </div>
-                            <div>
-                                <div className="text-[10px] text-white/50 tracking-widest">EXPERIENCE</div>
-                                <div className="text-sm font-semibold text-white">3+ Years</div>
-                            </div>
-                        </div> */}
-
-                        {/* <div className="absolute top-6 -right-6 glass rounded-2xl px-4 py-3 flex items-center gap-3 animate-float-slow" style={{ animationDelay: "-4s" }}>
-                            <div className="h-9 w-9 rounded-lg bg-gradient-to-br from-cyan-400 to-purple-500 flex items-center justify-center text-white font-bold text-sm">
-                                ★
-                            </div>
-                            <div>
-                                <div className="text-[10px] text-white/50 tracking-widest">PROJECTS</div>
-                                <div className="text-sm font-semibold text-white">40+ Shipped</div>
-                            </div>
-                        </div> */}
                     </div>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 import { useReveal } from "../hooks/useReveal";
-import { Code2, Rocket, Database } from "lucide-react";
+import { CodesandboxIcon, Database, Settings, CodeXmlIcon } from "lucide-react";
 
 // const STATS = [
 //     { label: "Years Experience", value: "4+" },
@@ -10,16 +10,28 @@ import { Code2, Rocket, Database } from "lucide-react";
 
 const SKILL_GROUPS = [
     {
-        icon: Code2,
+        icon: CodesandboxIcon,
         title: "Frontend",
         description: "Building fast, accessible interfaces with modern frameworks.",
-        skills: ["React", "HTML5", "CSS3", "Tailwind", "Framer Motion"],
+        skills: ["React", "HTML5", "CSS3", "Tailwind", "JavaScript"],
+    },
+    {
+        icon: Settings,
+        title: "Backend",
+        description: "Comfy on the server side for end-to-end products.",
+        skills: ["Node.js", "Express", "PHP", "PostgreSQL", "Supabase"],
     },
     {
         icon: Database,
-        title: "Backend",
-        description: "Comfy on the server side for end-to-end products.",
-        skills: ["Node.js", "tRPC", "Prisma", "PostgreSQL", "Supabase"],
+        title: "Databases",
+        description: "Designing efficient data models and queries for scalable applications.",
+        skills: ["MySQL", "MongoDB"],
+    },
+    {
+        icon: CodeXmlIcon,
+        title: "Programming Languages",
+        description: "Comfortable with a range of languages for different tasks, from scripting to full-stack development.",
+        skills: ["Java", "JavaScript", "C++", "Python", "SQL"],
     },
 ];
 
